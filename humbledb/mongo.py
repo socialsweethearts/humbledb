@@ -256,10 +256,10 @@ class Mongo(object):
             kwargs['maxPoolSize'] = kwargs.pop('max_pool_size')
             
             #extra timeout stuff because this doesnt allow any other parameters
-            kwargs['socketTimeoutMS'] = 200
+            kwargs['socketTimeoutMS'] = 10000
             kwargs['connectTimeoutMS'] = 200
-            kwargs['serverSelectionTimeoutMS'] = 200
-            kwargs['waitQueueTimeoutMS'] = 200
+            kwargs['serverSelectionTimeoutMS'] = 2000
+            kwargs['waitQueueTimeoutMS'] = 2000
             
             # Handle other 3.0 stuff
             if kwargs.get('ssl') and ssl:
