@@ -254,6 +254,13 @@ class Mongo(object):
             kwargs.pop('auto_start_request')
             # Handle changed keywords
             kwargs['maxPoolSize'] = kwargs.pop('max_pool_size')
+            
+            #extra timeout stuff because this doesnt allow any other parameters
+            kwargs['socketTimeoutMS'] = 200
+            kwargs['connectTimeoutMS'] = 200
+            kwargs['serverSelectionTimeoutMS'] = 200
+            kwargs['waitQueueTimeoutMS'] = 200
+            
             # Handle other 3.0 stuff
             if kwargs.get('ssl') and ssl:
                 kwargs.setdefault('ssl_cert_reqs', ssl.CERT_NONE)
